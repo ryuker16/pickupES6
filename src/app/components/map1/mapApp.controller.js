@@ -1,0 +1,83 @@
+
+
+
+class MapAppController {
+    constructor(mapData) {
+        this.mapData = mapData;
+        //this.mapAppService = MapAppService;
+        this.map = {
+            zoom: 12,
+            bounds: {},
+            center: {
+                latitude: 36.160338,
+                longitude: -86.778780
+            }
+          };
+          this.options = {
+                scrollwheel: true,
+          };
+}
+
+
+};
+
+//MapAppController.$inject(['MapAppService'])
+export default MapAppController;
+    // .controller('MapCtrl',['$scope', 'uiGmapGoogleMapApi','uiGmapIsReady', '$http', function($scope, uiGmapGoogleMapApi,uiGmapIsReady, $http) {
+    //     uiGmapGoogleMapApi.then(function(maps) {
+    //
+    //
+    //         uiGmapIsReady.promise()
+    //             .then(function(instances) {
+    //             var  sports = ["baseball", "football", "paddle", "soccer", "boxing", "dart", "biking", "golf", "hockey",
+    //                     "inline-skating", "tennis", "volleyball", "skateboard", "kickball", "bowling", "pool",
+    //                     "ride", "hike", "ice-skating"];
+    //
+    //                 sorted(sports);
+    //
+    //             });
+    //
+    //
+    //         $scope.windowCoords = {};
+    //
+    //         $scope.onClick = function(marker, eventName, model) {
+    //             //$scope.map.center.latitude = model.latitude;
+    //             //$scope.map.center.longitude = model.longitude;
+    //             //$scope.map.zoom = 11;
+    //             $scope.windowCoords.latitude = model.latitude;
+    //             $scope.windowCoords.longitude = model.longitude;
+    //             $scope.Name = model.title;
+    //             $scope.show = true;
+    //         };
+    //
+    //         $scope.closeClick = function() {
+    //             $scope.show = false;
+    //         };
+    //
+    //         $scope.options = {
+    //             scrollwheel: true,
+    //         };
+    //
+    //         $scope.show = false;
+    //
+    //     });
+    // }]);
+
+//
+// function genaratePlaces(count){
+//     var vals = [];
+//     for(var i = 0; i < count; i++) {
+//         vals.push({
+//             latitude: getRandomArbitrary(33.192528,48.209871),
+//             longitude: getRandomArbitrary(-118.586462,-81.716346),
+//             id: i,
+//             name: 'Place #' + i
+//         });
+//     }
+//     return vals;
+// }
+//
+//
+// function getRandomArbitrary(min, max) {
+//     return Math.random() * (max - min) + min;
+// }
