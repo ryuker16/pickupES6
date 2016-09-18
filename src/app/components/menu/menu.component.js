@@ -1,5 +1,7 @@
 import MenuController from './menu.controller';
 
+//this has a mobile nav and non mobile nav. Still working on this since I plan on switching it.
+
 const menuComponent = {
   controller: MenuController,
   bindings: {
@@ -35,8 +37,11 @@ popover-placement="bottom"><a href="#" >Create Game</a></li>
           <input type="text" class="form-control" placeholder="Search Games">
         </div>
         </li>
-<li class="" uib-popover-html="$ctrl.profileHtml" popover-trigger="'mouseenter'"
-popover-placement="bottom-left"><a href="#">Profile</a></li>
+<li class="" uib-popover-html="$ctrl.profileHtml"  popover-trigger="'mouseenter'"
+popover-placement="bottom-left">
+<a  ng-click="$ctrl.authorize('facebook')" ng-if="!$ctrl.isAuthenticated()" href="">Log In</a>
+<a ng-click="$ctrl.logOut()" ng-if="$ctrl.isAuthenticated()"href="">Log Out</a>
+ </li>
 </ul>
 
 

@@ -1,13 +1,12 @@
 import MapAppController from './mapApp.controller';
-//import 'angular-google-maps';
 
 const MapAppComponent = {
   controller: MapAppController,
-  bindings:{
+  bindings: {
     mapData: '<'
   },
-  template:`
-  <menu-comp>testing</menu-comp>
+  template: `
+  <menu-comp log-in-status='$ctrl.login()'>testing</menu-comp>
   <div class='googlemap'>
   <ui-gmap-google-map center='$ctrl.map.center' zoom='$ctrl.map.zoom' draggable="true"
                     options="$ctrl.options" bounds="$ctrl.map.bounds" control="googlemap">
@@ -21,17 +20,11 @@ const MapAppComponent = {
                            </p>
                            </div>
                            </ui-gmap-windows>
-                           <div>uib-popover="Hiya" popover-trigger="'click'"
-                          popover-placement="bottom"><a href="#">Choose Sport</a></div>
+
    </ui-gmap-markers>
   </ui-gmap-google-map>
   </div>
   `
-  };
+};
 
 export default MapAppComponent;
-
-
-// <ui-gmap-window show="false" coords='windowCoords' closeClick="">
-//   <div>hiya</div>
-// </ui-gmap-window>

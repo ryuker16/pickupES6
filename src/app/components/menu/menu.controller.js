@@ -15,6 +15,7 @@ class MenuController {
     // this.sortSportsHtml = ;
     // this.makeGame = ;
   }
+
   $onInit(){
   this.curMap = this.parent.getMyData();
 console.log(this.parent.getMyData());
@@ -31,6 +32,20 @@ console.log(this.parent.getMyData());
         return false
       }
     }
+
+  logOut() {
+this.parent.auth.logout();
+    }
+
+  isAuthenticated() {
+       console.log(this.parent.auth.isAuthenticated());
+   return this.parent.auth.isAuthenticated();
+
+  }
+
+  authorize(provider) {
+    this.parent.authenticate(provider);
+  }
 
   resetChoices() {
     this.parent.undoSortSports();

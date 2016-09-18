@@ -16,15 +16,15 @@ class MapAppService {
       "ride", "hike", "ice-skating"
     ];
 
-
+    //returns all we need to to make googe map markers and populate out menus
     return this.$http.get('app/components/map/data/meetup.json').then(function(response) {
       let finalArray = response.data.results.map(function(results) {
         let sportChoices = chosen !== undefined ? chosen : sports;
         if (results.venue) {
           for (var i = 0; i < sportChoices.length; i++) {
-              if (results.description == undefined) {
-                results.description  = "No Description Provided";
-              }
+            if (results.description == undefined) {
+              results.description = "No Description Provided";
+            }
 
             if (results.group.name.toLowerCase().search(sportChoices[i].toLowerCase()) !=
               -1 || results.description.toLowerCase().search(sportChoices[i].toLowerCase()) != -1) {
@@ -46,7 +46,9 @@ class MapAppService {
                 url: results.event_url,
                 going: results.yes_rsvp_count,
                 maybeGoing: results.maybe_rsvp_count,
-                options:{visible:true}
+                options: {
+                  visible: true
+                }
               }
             }
           }
@@ -59,6 +61,7 @@ class MapAppService {
       });
 
       return markers;
+
     }, function(error) {
       console.log(error)
       return error
