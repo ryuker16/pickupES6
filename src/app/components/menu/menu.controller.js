@@ -7,7 +7,7 @@ class MenuController {
       "inline-skating", "tennis", "volleyball", "skateboard", "kickball", "bowling", "pool",
       "ride", "hike", "ice-skating"
     ];
-  //  this.curMap = this.newSports;
+    //  this.curMap = this.newSports;
     //detect if mobile or desktop
     this.device = deviceDetector.os;
     // templates for pop overs
@@ -16,30 +16,32 @@ class MenuController {
     // this.makeGame = ;
   }
 
-  $onInit(){
-  this.curMap = this.parent.getMyData();
-console.log(this.parent.getMyData());
-}
-  pickCatogories() {
-//   let curCatogories = this.parent.mapMenuData();
-
+  $onInit() {
+    this.curMap = this.parent.getMyData();
+    console.log(this.parent.getMyData());
   }
+  pickCatogories() {
+      //   let curCatogories = this.parent.mapMenuData();
+
+    }
     //determine if mobile device
   mobileDevice() {
-      if (this.device == 'windows' | 'mac' | 'linux' | 'unix') {
-        return true
-      } else {
-        return false
-      }
+    if (this.device == 'windows' | 'mac' | 'linux' | 'unix') {
+      return true
+    } else {
+      return false
     }
+  }
 
   logOut() {
-this.parent.auth.logout();
-    }
+    this.parent.auth.logout();
+  }
+
+
 
   isAuthenticated() {
-       console.log(this.parent.auth.isAuthenticated());
-   return this.parent.auth.isAuthenticated();
+    //console.log(this.parent.auth.isAuthenticated());
+    return this.parent.auth.isAuthenticated();
 
   }
 
@@ -52,12 +54,12 @@ this.parent.auth.logout();
   }
 
   alterMarkers(choice) {
-      this.parent.sortSports(choice);
-    }
+    this.parent.sortSports(choice);
+  }
 
   updateMap(choice) {
     this.parent.clickMe([choice]);
   }
 };
 
-  export default MenuController;
+export default MenuController;

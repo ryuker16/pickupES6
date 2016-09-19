@@ -32,20 +32,37 @@ const app = angular
   .component('mapMe', MapAppComponent)
   .component('menuComp', MenuComponent)
   .service('MapAppService', MapAppService)
-  .config((uiGmapGoogleMapApiProvider, $stateProvider, $urlRouterProvider, $authProvider) => {
+  .config((uiGmapGoogleMapApiProvider, $stateProvider, $urlRouterProvider, $authProvider, $httpProvider) => {
+
+    $httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
+
     // Configures google maps with API key
     uiGmapGoogleMapApiProvider.configure({
       key: 'AIzaSyDxUvPi28pVIgpZyYmjpH3YAZWa6VqMPQY',
       libraries: 'geometry,visualization'
     });
     //Facebook Authentication
+
+$authProvider.httpInterceptor = function() { return true; },
+$authProvider.withCredentials = false;
+$authProvider.tokenRoot = null;
+$authProvider.baseUrl = 'http://localhost:4000';
+// $authProvider.loginUrl = '/auth/login';
+// $authProvider.signupUrl = '/auth/signup';
+// $authProvider.unlinkUrl = '/auth/unlink/';
+$authProvider.tokenName = 'token';
+$authProvider.tokenPrefix = 'satellizer';
+$authProvider.tokenHeader = 'Authorization';
+$authProvider.tokenType = 'Bearer';
+$authProvider.storageType = 'localStorage';
+
     $authProvider.facebook({
-      name: 'facebook',
+    name: 'facebook',
      clientId: '164197200662441',
-     responseType: 'token',
+    responseType: 'code',
      url: '/auth/facebook',
   authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-  //redirectUri: window.location.origin + '/test',
+  redirectUri: window.location.origin + '/',
   requiredUrlParams: ['display', 'scope'],
   scope: ['email'],
   scopeDelimiter: ',',
